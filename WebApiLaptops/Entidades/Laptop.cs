@@ -7,6 +7,6 @@
         public int Provedor { get; set; }
         public int Stock { get; set; }
 
-
+        public List<Caracteristicas> caracteristicas { get; set; }
     }
 }
