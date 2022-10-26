@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApiLaptops;
 
@@ -11,9 +12,10 @@ using WebApiLaptops;
 namespace WebApiLaptops.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221026044525_Caracteristicas")]
+    partial class Caracteristicas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,18 +35,12 @@ namespace WebApiLaptops.Migrations
                     b.Property<string>("Grafica")
                         .HasColumnType("nvarchar(max)");
 
-<<<<<<< HEAD
-                    b.Property<int>("MarcaId")
-                        .HasColumnType("int");
-
-=======
                     b.Property<int?>("LaptopId")
                         .HasColumnType("int");
 
                     b.Property<string>("Marca")
                         .HasColumnType("nvarchar(max)");
 
->>>>>>> 0ce185813bd1120e2945be2041e297f00633c0c7
                     b.Property<int>("Memoria")
                         .HasColumnType("int");
 
@@ -71,11 +67,7 @@ namespace WebApiLaptops.Migrations
 
                     b.HasKey("Id");
 
-<<<<<<< HEAD
-                    b.HasIndex("MarcaId");
-=======
                     b.HasIndex("LaptopId");
->>>>>>> 0ce185813bd1120e2945be2041e297f00633c0c7
 
                     b.ToTable("Caracteristicas");
                 });
@@ -104,19 +96,9 @@ namespace WebApiLaptops.Migrations
 
             modelBuilder.Entity("WebApiLaptops.Entidades.Caracteristicas", b =>
                 {
-<<<<<<< HEAD
-                    b.HasOne("WebApiLaptops.Entidades.Laptop", "Marca")
-                        .WithMany("caracteristicas")
-                        .HasForeignKey("MarcaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Marca");
-=======
                     b.HasOne("WebApiLaptops.Entidades.Laptop", null)
                         .WithMany("caracteristicas")
                         .HasForeignKey("LaptopId");
->>>>>>> 0ce185813bd1120e2945be2041e297f00633c0c7
                 });
 
             modelBuilder.Entity("WebApiLaptops.Entidades.Laptop", b =>

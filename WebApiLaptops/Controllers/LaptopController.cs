@@ -46,7 +46,7 @@ namespace WebApiLaptops.Controllers
         [HttpDelete ("{id:int}")]
         public async Task<ActionResult> Delete(int id)
         {
-            var exist = await dbContext.Laptops.AnyAsync(X => X.Id == id);
+            var exist = await dbContext.Laptops.AnyAsync(x => x.Id == id);
             if (!exist)
             {
                 return NotFound();

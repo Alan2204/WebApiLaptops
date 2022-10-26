@@ -4,9 +4,16 @@ using WebApiLaptops.Entidades;
 
 namespace WebApiLaptops.Controllers
 {
+<<<<<<< HEAD
     [ApiController]
     [Route("api/caracteristicas")]
     public class CaracteristicasController : ControllerBase
+=======
+
+    [ApiController]
+    [Route("api/caracteristicas")]
+    public class CaracteristicasController
+>>>>>>> 0ce185813bd1120e2945be2041e297f00633c0c7
     {
         private readonly ApplicationDbContext dbContext;
         public CaracteristicasController(ApplicationDbContext dbContext)
@@ -25,6 +32,7 @@ namespace WebApiLaptops.Controllers
         {
             return await dbContext.Caracteristicas.FirstOrDefaultAsync(x => x.Id == id);
         }
+<<<<<<< HEAD
 
         [HttpPost]
         public async Task<ActionResult> Post(Caracteristicas caracteristicas)
@@ -73,5 +81,7 @@ namespace WebApiLaptops.Controllers
             return Ok();
         }
 
+=======
+>>>>>>> 0ce185813bd1120e2945be2041e297f00633c0c7
     }
 }
