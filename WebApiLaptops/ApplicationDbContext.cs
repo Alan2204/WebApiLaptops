@@ -12,6 +12,6 @@ namespace WebApiLaptops
         }
 
         public DbSet<Laptop> Laptops { get; set; }
-
+        public DbSet<Caracteristicas> Caracteristicas { get; set; }
     }
 }

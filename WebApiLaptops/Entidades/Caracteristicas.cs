@@ -3,7 +3,6 @@
     public class Caracteristicas
     {
         public int Id { get; set; }
-        public string Marca { get; set; }
         public string Modelo { get; set; }
         public string Procesador { get; set; }
         public string Grafica { get; set; }
@@ -13,5 +12,8 @@
         public string SistemaOperativo { get; set; }
         public int Resolucion { get; set; }
         public int Precio { get; set; }
+        public Laptop Marca { get; set; }
+        public int MarcaId { get; set; }
+
     }
 }
