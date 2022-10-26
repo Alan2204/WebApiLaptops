@@ -28,6 +28,36 @@ namespace WebApiLaptops.Controllers
             await dbContext.SaveChangesAsync();
             return Ok();
         }
+
+        [HttpPut ("{id:int}")]
+        public async Task<ActionResult> Put(Laptop laptop, int id)
+        {
+            if(laptop.Id != id)
+            {
+                return BadRequest("El id de la laptop no coincide con el establecido en la url");
+
+            }
+
+            dbContext.Update(laptop);
+            await dbContext.SaveChangesAsync();
+            return Ok();
+        }
+
+        [HttpDelete ("{id:int}")]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var exist = await dbContext.Laptops.AnyAsync(X => X.Id == id);
+            if (!exist)
+            {
+                return NotFound();
+            }
+            dbContext.Remove(new Laptop()
+            {
+                Id = id
+            });
+            await dbContext.SaveChangesAsync();
+            return Ok();
+        }
      }
    
 }
