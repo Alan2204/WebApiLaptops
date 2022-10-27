@@ -11,7 +11,7 @@ using WebApiLaptops;
 namespace WebApiLaptops.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221026172851_Caracteristicas")]
+    [Migration("20221027031957_Caracteristicas")]
     partial class Caracteristicas
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -93,17 +93,12 @@ namespace WebApiLaptops.Migrations
             modelBuilder.Entity("WebApiLaptops.Entidades.Caracteristicas", b =>
                 {
                     b.HasOne("WebApiLaptops.Entidades.Laptop", "Marca")
-                        .WithMany("caracteristicas")
+                        .WithMany()
                         .HasForeignKey("MarcaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Marca");
-                });
-
-            modelBuilder.Entity("WebApiLaptops.Entidades.Laptop", b =>
-                {
-                    b.Navigation("caracteristicas");
                 });
 #pragma warning restore 612, 618
         }

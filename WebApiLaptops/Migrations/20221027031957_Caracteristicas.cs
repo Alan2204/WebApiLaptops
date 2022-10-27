@@ -9,12 +9,26 @@ namespace WebApiLaptops.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Laptops",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Marca = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Provedor = table.Column<int>(type: "int", nullable: false),
+                    Stock = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Laptops", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Caracteristicas",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    MarcaId = table.Column<int>(type: "int", nullable: false),
                     Modelo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Procesador = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Grafica = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -23,7 +37,8 @@ namespace WebApiLaptops.Migrations
                     Memoria = table.Column<int>(type: "int", nullable: false),
                     SistemaOperativo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Resolucion = table.Column<int>(type: "int", nullable: false),
-                    Precio = table.Column<int>(type: "int", nullable: false)
+                    Precio = table.Column<int>(type: "int", nullable: false),
+                    MarcaId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -46,6 +61,9 @@ namespace WebApiLaptops.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Caracteristicas");
+
+            migrationBuilder.DropTable(
+                name: "Laptops");
         }
     }
 }
