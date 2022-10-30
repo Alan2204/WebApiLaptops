@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebApiLaptops.Entidades;
 
+
 namespace WebApiLaptops.Controllers
 {
     [ApiController]
@@ -9,6 +10,7 @@ namespace WebApiLaptops.Controllers
     public class LaptopsController : ControllerBase
      {
         private readonly ApplicationDbContext dbContext;
+        
         public LaptopsController(ApplicationDbContext dbContext)
         {
             this.dbContext = dbContext;
@@ -24,6 +26,11 @@ namespace WebApiLaptops.Controllers
         [HttpPost]
         public async Task<ActionResult> Post(Laptop laptop)
         {
+            var mismo = await dbContext.Laptops.AnyAsync(x => x.Marca == laptop.Marca);
+            if (mismo)
+            {
+                return BadRequest("Ya existe una marca con el mismo nombre en la bse de datos. ");
+            }
             dbContext.Add(laptop);
             await dbContext.SaveChangesAsync();
             return Ok();

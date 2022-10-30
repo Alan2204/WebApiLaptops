@@ -21,6 +21,7 @@ namespace WebApiLaptops.Entidades
         [Required(ErrorMessage = "El campo {0} es requerido.")]
         public int Resolucion { get; set; }
         [Required(ErrorMessage = "El campo {0} es requerido.")]
+        [Range(2000,100000, ErrorMessage = "Precio no valido. ")]
         public int Precio { get; set; }
         public Laptop Marca { get; set; }
         public int MarcaId { get; set; }

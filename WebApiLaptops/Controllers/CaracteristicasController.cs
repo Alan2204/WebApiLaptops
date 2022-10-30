@@ -17,7 +17,10 @@ namespace WebApiLaptops.Controllers
             [HttpGet]
             public async Task<ActionResult<List<Caracteristicas>>> GetAll()
             {
+                
+
                 return await dbContext.Caracteristicas.ToListAsync();
+                //throw new NotImplementedException();
             }
 
             [HttpGet("{id:int}")]
@@ -31,10 +34,17 @@ namespace WebApiLaptops.Controllers
             public async Task<ActionResult> Post(Caracteristicas caracteristicas)
             {
                 var existeModelo = await dbContext.Laptops.AnyAsync(x => x.Id == caracteristicas.MarcaId);
+                var mismo = await dbContext.Caracteristicas.AnyAsync(x => x.Modelo == caracteristicas.Modelo);
 
                 if (!existeModelo)
                 {
                     return BadRequest($"No existe la marca con el id: {caracteristicas.MarcaId}");
+                }
+
+                if (mismo)
+                {
+                    return BadRequest("Ya existe un modelo con el mismo nombre en la base de datos. ");
+
                 }
 
                 dbContext.Add(caracteristicas);
