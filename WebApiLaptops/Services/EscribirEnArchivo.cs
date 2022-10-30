@@ -28,6 +28,7 @@
         private void DoWork(object state)
         {
             Escribir("Proceso en ejecucion: " + DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss"));
+            Escribir("Mensaje para probar ");
         }
 
         private void Escribir(string msg)
