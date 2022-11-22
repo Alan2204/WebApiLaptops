@@ -59,3 +59,7 @@ D:\Documentos\Tarea 2022 parte 2\Back-end\WebApi2.0\WebApiLaptops\WebApiLaptops\
 D:\Documentos\Tarea 2022 parte 2\Back-end\WebApi2.0\WebApiLaptops\WebApiLaptops\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\Documentos\Tarea 2022 parte 2\Back-end\WebApi2.0\WebApiLaptops\WebApiLaptops\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 D:\Documentos\Tarea 2022 parte 2\Back-end\WebApi2.0\WebApiLaptops\WebApiLaptops\bin\Debug\net6.0\WebApiLaptops.staticwebassets.runtime.json
+D:\Documentos\Tarea 2022 parte 2\Back-end\WebApi2.0\WebApiLaptops\WebApiLaptops\bin\Debug\net6.0\libman.json
+D:\Documentos\Tarea 2022 parte 2\Back-end\WebApi2.0\WebApiLaptops\WebApiLaptops\bin\Debug\net6.0\AutoMapper.dll
+D:\Documentos\Tarea 2022 parte 2\Back-end\WebApi2.0\WebApiLaptops\WebApiLaptops\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\Documentos\Tarea 2022 parte 2\Back-end\WebApi2.0\WebApiLaptops\WebApiLaptops\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

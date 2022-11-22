@@ -32,6 +32,9 @@ namespace WebApiLaptops
             options.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
+            //Permite mappear las clases
+            services.AddAutoMapper(typeof(Startup));
+
            
             services.AddHostedService<EscribirEnArchivo>();
             services.AddEndpointsApiExplorer();

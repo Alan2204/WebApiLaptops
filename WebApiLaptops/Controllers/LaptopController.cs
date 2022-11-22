@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using WebApiLaptops.DTOs;
 using WebApiLaptops.Entidades;
 
 
@@ -8,32 +10,38 @@ namespace WebApiLaptops.Controllers
     [ApiController]
     [Route("api/Laptops")]
     public class LaptopsController : ControllerBase
-     {
+    {
         private readonly ApplicationDbContext dbContext;
+        private readonly IMapper mapper;
         
-        public LaptopsController(ApplicationDbContext dbContext)
+        public LaptopsController(ApplicationDbContext dbContext, IMapper mapper)
         {
             this.dbContext = dbContext;
+            this.mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Laptop>>> Get()
+        public async Task<ActionResult<List<GetLapDTO>>> Get()
         {
-            return await dbContext.Laptops.ToListAsync();
-            
+            var laptop = await dbContext.Laptops.ToListAsync();
+            return mapper.Map<List<GetLapDTO>>(laptop);
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post(Laptop laptop)
+        public async Task<ActionResult> Post(LaptopDTO laptopDto)
         {
-            var mismo = await dbContext.Laptops.AnyAsync(x => x.Marca == laptop.Marca);
+            var mismo = await dbContext.Laptops.AnyAsync(x => x.Marca == laptopDto.Marca);
             if (mismo)
             {
                 return BadRequest("Ya existe una marca con el mismo nombre en la bse de datos. ");
             }
+            var laptop = mapper.Map<Laptop>(laptopDto);
             dbContext.Add(laptop);
             await dbContext.SaveChangesAsync();
-            return Ok();
+
+            var laptopDTO = mapper.Map<GetLapDTO>(laptop);
+            
+            return CreatedAtRoute("Obtener info", new {id = laptop.Id}, laptopDto);
         }
 
         [HttpPut ("{id:int}")]
