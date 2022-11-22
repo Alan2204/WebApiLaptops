@@ -12,6 +12,24 @@ namespace WebApiLaptops.Utilidades
         public AutoMapperProfile()
         {
             CreateMap<Caracteristicas, CaracteristicasPostDTO>();
+            CreateMap<Laptop, GetLapDTO>();
         }
+
+        /*private List<LaptopDTO> MapCaracteristicasDTOLap(Caracteristicas caracteristicas, CaracteristicasDTO caracteristicasDto)
+        {
+            var result = new List<LaptopDTO>();
+
+            if(caracteristicas.Marca == null) { return result; }
+
+            foreach(var caracteristicaLap in caracteristicas.Marca)
+            {
+                result.Add(new LaptopDTO()
+                {
+
+                });
+            }
+
+            return result;
+        }*/
     }
 }
