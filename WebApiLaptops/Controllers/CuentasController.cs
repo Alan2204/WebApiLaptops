@@ -41,7 +41,8 @@ namespace WebApiLaptops.Controllers
             }
         }
 
-        [HttpGet("Login")]
+        [HttpPost("Login")]
+        
         public async Task<ActionResult<RespuestaAutentificacion>> Login(CredencialesUsuario credencialesUsuario)
         {
             var result = await signInManager.PasswordSignInAsync(credencialesUsuario.Email, credencialesUsuario.Password,
@@ -56,6 +57,7 @@ namespace WebApiLaptops.Controllers
             }
         }
 
+        //Solo funciona si la sesion no a vencido.
         [HttpGet("RenovarToken")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<ActionResult<RespuestaAutentificacion>> Renovar()
@@ -100,6 +102,7 @@ namespace WebApiLaptops.Controllers
         }
 
         [HttpPost("HacerAdmin")]
+       
         public async Task<ActionResult> HacerAdmin(EditarAdminDTO editarAdminDTO)
         {
             var usuario = await userManager.FindByEmailAsync(editarAdminDTO.Email);
@@ -110,6 +113,7 @@ namespace WebApiLaptops.Controllers
         }
 
         [HttpPost("RemoverAdmin")]
+
         public async Task<ActionResult> RemoverAdmin(EditarAdminDTO editarAdminDTO)
         {
             var usuario = await userManager.FindByEmailAsync(editarAdminDTO.Email);

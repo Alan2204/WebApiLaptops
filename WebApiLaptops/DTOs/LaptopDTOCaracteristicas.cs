@@ -2,6 +2,6 @@
 {
     public class LaptopDTOCaracteristicas: GetLapDTO
     {
-        public List<GetLapDTO> Laptop { get; set; }
+        public List<CaracteristicasDTO> Caracteristicas { get; set; }
     }
 }

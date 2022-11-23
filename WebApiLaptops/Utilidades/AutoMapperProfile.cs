@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using System.Data.Common;
 using WebApiLaptops.DTOs;
 using WebApiLaptops.Entidades;
 
@@ -11,25 +12,36 @@ namespace WebApiLaptops.Utilidades
     {
         public AutoMapperProfile()
         {
-            CreateMap<Caracteristicas, CaracteristicasPostDTO>();
+            CreateMap<LaptopDTO, Laptop>();
             CreateMap<Laptop, GetLapDTO>();
+            CreateMap<Caracteristicas, CarcteristicasDTOLap>()
+                .ForMember(lap => lap.Modelo, opciones =>opciones.MapFrom(MapLaptopDTOCaracteristica));
+            CreateMap<Caracteristicas, CaracteristicasPostDTO>();
+            CreateMap<Laptop, LaptopDTOCaracteristicas>();
+                
+            
         }
 
-        /*private List<LaptopDTO> MapCaracteristicasDTOLap(Caracteristicas caracteristicas, CaracteristicasDTO caracteristicasDto)
+        private List<LaptopDTO> MapLaptopDTOCaracteristica(Caracteristicas caracteristicas, CaracteristicasDTO caracteristicasDto)
         {
             var result = new List<LaptopDTO>();
 
-            if(caracteristicas.Marca == null) { return result; }
+            if(caracteristicas.LapCaracteristica == null) { return result; }
 
-            foreach(var caracteristicaLap in caracteristicas.Marca)
+            foreach(var caracteristicaLap in caracteristicas.LapCaracteristica)
             {
                 result.Add(new LaptopDTO()
                 {
+                    Marca = caracteristicaLap.Caracteristicas.Modelo
 
                 });
             }
 
             return result;
-        }*/
+        }
+
+ 
+
+
     }
 }

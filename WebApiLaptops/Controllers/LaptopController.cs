@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using WebApiLaptops.DTOs;
 using WebApiLaptops.Entidades;
 
@@ -9,6 +12,7 @@ namespace WebApiLaptops.Controllers
 {
     [ApiController]
     [Route("api/Laptops")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "EsAdmin")]
     public class LaptopsController : ControllerBase
     {
         private readonly ApplicationDbContext dbContext;
@@ -21,6 +25,7 @@ namespace WebApiLaptops.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult<List<GetLapDTO>>> Get()
         {
             var laptop = await dbContext.Laptops.ToListAsync();
@@ -28,20 +33,23 @@ namespace WebApiLaptops.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post(LaptopDTO laptopDto)
+       
+        public async Task<ActionResult> Post([FromBody] LaptopDTO laptopDto)
         {
             var mismo = await dbContext.Laptops.AnyAsync(x => x.Marca == laptopDto.Marca);
             if (mismo)
             {
-                return BadRequest("Ya existe una marca con el mismo nombre en la bse de datos. ");
+                return BadRequest($"Ya existe {laptopDto.Marca} en la base de datos. ");
             }
+
             var laptop = mapper.Map<Laptop>(laptopDto);
+
             dbContext.Add(laptop);
             await dbContext.SaveChangesAsync();
 
             var laptopDTO = mapper.Map<GetLapDTO>(laptop);
             
-            return CreatedAtRoute("Obtener info", new {id = laptop.Id}, laptopDto);
+            return CreatedAtRoute("obtenerlap", new {id = laptop.Id}, laptopDTO);
         }
 
         [HttpPut ("{id:int}")]

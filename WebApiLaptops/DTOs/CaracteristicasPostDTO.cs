@@ -5,6 +5,7 @@ namespace WebApiLaptops.DTOs
 {
     public class CaracteristicasPostDTO
     {
+        public int MarcaId { get; set; }
         [Required(ErrorMessage = "El campo {0} es requerido.")]
         public string Modelo { get; set; }
         [Required(ErrorMessage = "El campo {0} es requerido.")]
@@ -23,7 +24,6 @@ namespace WebApiLaptops.DTOs
         [Required(ErrorMessage = "El campo {0} es requerido.")]
         [Range(2000, 100000, ErrorMessage = "Precio no valido. ")]
         public int Precio { get; set; }
-        public Laptop Marca { get; set; }
-        public int MarcaId { get; set; }
+       
     }
 }
