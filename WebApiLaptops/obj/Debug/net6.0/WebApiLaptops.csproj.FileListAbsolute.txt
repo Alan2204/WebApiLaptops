@@ -63,3 +63,4 @@ D:\Documentos\Tarea 2022 parte 2\Back-end\WebApi2.0\WebApiLaptops\WebApiLaptops\
 D:\Documentos\Tarea 2022 parte 2\Back-end\WebApi2.0\WebApiLaptops\WebApiLaptops\bin\Debug\net6.0\AutoMapper.dll
 D:\Documentos\Tarea 2022 parte 2\Back-end\WebApi2.0\WebApiLaptops\WebApiLaptops\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 D:\Documentos\Tarea 2022 parte 2\Back-end\WebApi2.0\WebApiLaptops\WebApiLaptops\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Documentos\Tarea 2022 parte 2\Back-end\WebApi2.0\WebApiLaptops\WebApiLaptops\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
